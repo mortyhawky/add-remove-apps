@@ -1,0 +1,7 @@
+Get-ExecutionPolicy -List
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Write-Output "`n"
+Get-ExecutionPolicy -List
+
+Invoke-RestMethod get.scoop.sh -outfile 'install.ps1'
+
