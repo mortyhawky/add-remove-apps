@@ -1,0 +1,24 @@
+# List of optional media/image extensions to remove
+$optionalExtensions = @(
+    "MSIX\Microsoft.AV1VideoExtension",
+    "MSIX\Microsoft.AVCEncoderVideoExtension",
+    "MSIX\Microsoft.HEIFImageExtension",
+    "MSIX\Microsoft.HEVCVideoExtension",
+    "MSIX\Microsoft.MPEG2VideoExtension",
+    "MSIX\Microsoft.RawImageExtension",
+    "MSIX\Microsoft.VP9VideoExtension",
+    "MSIX\Microsoft.WebpImageExtension"
+)
+
+foreach ($ext in $optionalExtensions) {
+    $pkg = Get-AppxPackage -Name $ext -ErrorAction SilentlyContinue
+    if ($pkg) {
+        Remove-AppxPackage $pkg.PackageFullName
+        Write-Output "Removed $ext"
+    } else {
+        Write-Output "$ext not installed"
+    }
+}
+
+Write-Output "Done. Optional media extensions removed where present."
+
