@@ -10,6 +10,7 @@ everything-lite
 gh
 git
 less
+portable-virtualbox
 pwsh
 scoop
 vifm
